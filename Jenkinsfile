@@ -3,17 +3,15 @@ pipeline {
 
     stages {
 
+        stage('Checkout'){
+            steps{
+                git url: 'https://github.com/tvivektripathi/Codex.git', branch: 'main'
+                sh "ls -ltr"
+            }
+        }
 
         stage('Setup') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'server-creds', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
-
-                    sh '''
-                    echo ${myuser}
-                    echo ${mypassword}
-                    '''
-                }
-
                 sh "pip install -r requirements.txt"
             
             }
