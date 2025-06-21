@@ -12,7 +12,7 @@ pipeline {
 
         stage('Setup') {
             steps {
-                pip "install -r requirements.txt"
+                bat "pip install -r requirements.txt"
             
             }
         }
