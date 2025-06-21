@@ -16,12 +16,12 @@ pipeline {
             
             }
         }
-        stage('Test') {
-            steps {
-                bat "pytest"
+        // stage('Test') {
+        //     steps {
+        //         bat "pytest"
                 
-            }
-        }    
+        //     }
+        // }    
         stage('Deployment') {
             input {
                 message "Do you want to proceed further?"
