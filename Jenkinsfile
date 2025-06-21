@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout'){
             steps{
                 git url: 'https://github.com/tvivektripathi/Codex.git', branch: 'main'
-                dir
+                bat "dir"
             }
         }
 
@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "pytest"
+                bat "pytest"
                 
             }
         }    
