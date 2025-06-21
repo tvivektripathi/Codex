@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout'){
             steps{
                 git url: 'https://github.com/tvivektripathi/Codex.git', branch: 'main'
-                sh "ls -ltr"
+                dir
             }
         }
 
