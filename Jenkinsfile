@@ -16,9 +16,10 @@ pipeline {
 
         stage('Setup') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'db_user', usernameVariable:"myuser", passwordVariable: "password")])
                 bat "pip install -r requirements.txt"
                 // echo "The database ip is :${DB_HOST}"
-            
+                echo "The dbUser id :${dbUser}; db user: ${myuser} and password: ${password}"
             }
         }
         // stage('Test') {
