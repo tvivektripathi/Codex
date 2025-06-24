@@ -9,12 +9,12 @@ pipeline {
 
     stages {
 
-        // stage('Checkout'){
-        //     steps{
-        //         git url: 'https://github.com/tvivektripathi/Codex.git', branch: 'main'
-        //         bat "dir"
-        //     }
-        // }
+        stage('Checkout'){
+            steps{
+                git url: 'https://github.com/tvivektripathi/Codex.git', branch: 'main'
+                bat "dir"
+            }
+        }
 
         stage('Setup') {
             steps {
