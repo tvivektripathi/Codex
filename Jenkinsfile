@@ -30,7 +30,6 @@ pipeline {
         //     }
         // }    
         stage('Deployment') {
-            echo "The database user :${USERNAME} and password: ${PASSWORD}"
             input {
                 message "Do you want to proceed further?"
                 ok "Yes"
@@ -39,7 +38,8 @@ pipeline {
             }   
             steps {
                 echo "Running Deployment"
-                
+                echo "The database user :${USERNAME} and password: ${PASSWORD}"
+            
             }
         } 
     }
