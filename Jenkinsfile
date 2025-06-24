@@ -2,9 +2,7 @@ pipeline {
     agent any
 
     environment{
-        DB_HOST="192.168.12.1"
-        USERNAME="user1"
-        PASSWORD="password123"
+        dbUser = credentials("db_user")
     }
 
     stages {
@@ -38,7 +36,7 @@ pipeline {
             }   
             steps {
                 echo "Running Deployment"
-                echo "The database user :${USERNAME} and password: ${PASSWORD}"
+                echo "The dbUser id :${db_user}; db user: ${db_user_user} and password: ${db_user_psw}"
             
             }
         } 
