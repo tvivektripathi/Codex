@@ -36,7 +36,7 @@ pipeline {
             }   
             steps {
                 echo "Running Deployment"
-                echo "The dbUser id :${dbUser}; db user: ${dbUser_user} and password: ${dbUser_psw}"
+                echo "The dbUser id :${dbUser}; db user: ${dbUser_usr} and password: ${dbUser_psw}"
             
             }
         } 
