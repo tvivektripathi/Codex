@@ -1,40 +1,9 @@
-// pipeline {
-//     agent {
-//         docker {
-//             image 'maven:3.9.0'
-//             args '-v /root/.m2:/root/.m2'
-//         }
-//     }
-//     stages {
-//         stage('Build') {
-//             steps {
-//                 sh 'mvn -B -DskipTests clean package'
-//             }
-//         }
-//         stage('Test') {
-//             steps {
-//                 sh 'mvn test'
-//             }
-//             post {
-//                 always {
-//                     junit 'target/surefire-reports/*.xml'
-//                 }
-//             }
-//         }
-//         stage('Deliver') {
-//             steps {
-//                 sh './jenkins/scripts/deliver.sh'
-//             }
-//         }
-//     }
-// }
-
 pipeline {
     agent any
 
     environment{
         DB_HOST="192.168.12.1"
-        USERNAME="user1"
+        dbUser=credentials('db_user')
         PASSWORD="password123"
     }
 
@@ -47,11 +16,15 @@ pipeline {
         //     }
         // }
 
-        stage('Setup') {
+        stage('build') {
             steps {
-                bat "pip install -r requirements.txt"
+                bat "mvn clean install"
                 // echo "The database ip is :${DB_HOST}"
+
                 echo "Commit: ${env.GIT_COMMIT}"
+                echo "secret: ${dbUser}"
+                echo "user: ${dbUser_user}"
+                echo "password: ${dbUser_psw}"
             
             }
         }
@@ -65,14 +38,12 @@ pipeline {
             input {
                 message "Do you want to proceed further?"
                 ok "Yes"
-                echo "The database user :${USERNAME} and password: "$PASSWORD"
+                echo "The database user :${USERNAME} and password: {$PASSWORD}"
             }
             steps {
                 echo "Running Deployment"
                 
             }
         } 
-
-            
     }
 }
