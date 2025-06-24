@@ -33,8 +33,9 @@ pipeline {
             input {
                 message "Do you want to proceed further?"
                 ok "Yes"
-                echo "The database user :${USERNAME} and password: "${PASSWORD}"
-            }
+                echo "The database user :${USERNAME} and password: ${PASSWORD}"
+
+            }   
             steps {
                 echo "Running Deployment"
                 
