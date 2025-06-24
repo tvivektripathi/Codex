@@ -50,7 +50,8 @@ pipeline {
         stage('Setup') {
             steps {
                 bat "pip install -r requirements.txt"
-                echo "The database ip is :${DB_HOST}"
+                // echo "The database ip is :${DB_HOST}"
+                echo "Commit: ${env.GIT_COMMIT}"
             
             }
         }
