@@ -3,7 +3,7 @@ pipeline {
 
     environment{
         DB_HOST="192.168.12.1"
-        dbUser=credentials('db_user')
+        USERNAME="user1"
         PASSWORD="password123"
     }
 
@@ -16,15 +16,10 @@ pipeline {
         //     }
         // }
 
-        stage('build') {
+        stage('Setup') {
             steps {
-                bat "mvn clean install"
+                bat "pip install -r requirements.txt"
                 // echo "The database ip is :${DB_HOST}"
-
-                echo "Commit: ${env.GIT_COMMIT}"
-                echo "secret: ${dbUser}"
-                echo "user: ${dbUser_user}"
-                echo "password: ${dbUser_psw}"
             
             }
         }
@@ -38,7 +33,7 @@ pipeline {
             input {
                 message "Do you want to proceed further?"
                 ok "Yes"
-                echo "The database user :${USERNAME} and password: {$PASSWORD}"
+                echo "The database user :${USERNAME} and password: "$PASSWORD"
             }
             steps {
                 echo "Running Deployment"
